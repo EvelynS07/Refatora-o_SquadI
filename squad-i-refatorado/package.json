@@ -1,0 +1,21 @@
+{
+  "name": "squad-i-refatorado",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfólio refatorado da Squad I com assistente Gemini.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "node --watch src/main.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
+
