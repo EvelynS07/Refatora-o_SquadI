@@ -5,7 +5,15 @@ function converterMensagemParaGemini({ role, content }) {
   };
 }
 
-function criarGeminiRepository({ clienteGemini, modelo, instrucaoSistema }) {
+function criarGeminiRepository({
+  clienteGemini,
+  modelo,
+  instrucaoSistema,
+  esperar = (milissegundos) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, milissegundos);
+    }),
+}) {
   return {
     async gerarResposta(mensagens) {
       const maxTentativas = 3;
@@ -29,9 +37,7 @@ function criarGeminiRepository({ clienteGemini, modelo, instrucaoSistema }) {
             throw erro;
           }
 
-          await new Promise((resolve) => {
-            setTimeout(resolve, 1000 * tentativa);
-          });
+          await esperar(1000 * tentativa);
         }
       }
     },
